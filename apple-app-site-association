@@ -1,11 +1,12 @@
-```json
 {
   "applinks": {
-    "apps": [],
-    "details": [{
-     "appID": "9UJWQ37PN7.com.StuNeal.Peak-Racing"
-      "paths": ["/peakracing/invite*"]
-    }]
+    "details": [
+      {
+        "appIDs": ["9UJWQ37PN7.com.StuNeal.Peak-Racing"],
+        "components": [
+          { "/": "/peakracing/invite*" }
+        ]
+      }
+    ]
   }
 }
-```
