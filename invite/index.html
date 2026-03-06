@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peak Racing - Add Friend</title>
+</head>
+<body style="font-family:sans-serif;text-align:center;padding-top:80px;">
+    <h2>Peak Racing</h2>
+    <p>Redirecting to the store...</p>
+    <script>
+        var ua = navigator.userAgent || '';
+        var isIOS = /iPhone|iPad|iPod/i.test(ua);
+        var isAndroid = /Android/i.test(ua);
+        // Replace these with your actual store URLs
+        var iosURL = 'https://apps.apple.com/app/id000000000';
+        var androidURL = 'https://play.google.com/store/apps/details?id=com.yourcompany.peakracing';
+        if (isIOS) window.location.href = iosURL;
+        else if (isAndroid) window.location.href = androidURL;
+        else document.querySelector('p').textContent = 'Open this link on your phone!';
+    </script>
+</body>
+</html>
