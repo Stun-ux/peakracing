@@ -7,17 +7,33 @@
 </head>
 <body style="font-family:sans-serif;text-align:center;padding-top:80px;">
     <h2>Peak Racing</h2>
-    <p>Redirecting to the store...</p>
+    <p id="status">Opening Peak Racing...</p>
     <script>
+        var params = new URLSearchParams(window.location.search);
+        var id = params.get('id');
         var ua = navigator.userAgent || '';
         var isIOS = /iPhone|iPad|iPod/i.test(ua);
         var isAndroid = /Android/i.test(ua);
-        // Replace these with your actual store URLs
-        var iosURL = 'https://apps.apple.com/app/id000000000';
-        var androidURL = 'https://play.google.com/store/apps/details?id=com.yourcompany.peakracing';
-        if (isIOS) window.location.href = iosURL;
-        else if (isAndroid) window.location.href = androidURL;
-        else document.querySelector('p').textContent = 'Open this link on your phone!';
+        // Replace with your actual store URLs
+        var iosStore = 'https://apps.apple.com/app/id000000000';
+        var androidStore = 'https://play.google.com/store/apps/details?id=com.StuNeal.Peak-Racing';
+
+        if (id) {
+            // Try custom scheme first
+            window.location.href = 'peakracing://addfriend?id=' + encodeURIComponent(id);
+
+            // If the app didn't intercept after 1.5s, fall back to store
+            setTimeout(function() {
+                var el = document.getElementById('status');
+                if (document.hidden || document.webkitHidden) return;
+                el.textContent = 'App not installed? Redirecting to store...';
+                if (isIOS) window.location.href = iosStore;
+                else if (isAndroid) window.location.href = androidStore;
+                else el.textContent = 'Open this link on your phone!';
+            }, 1500);
+        } else {
+            document.getElementById('status').textContent = 'Invalid invite link.';
+        }
     </script>
 </body>
 </html>
